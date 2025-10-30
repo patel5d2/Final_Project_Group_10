@@ -46,7 +46,7 @@ A comprehensive web application for managing room reservations built with ASP.NE
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/patel5d2/Final_Project_Group_10>
 cd Final_Project_Group_10
 ```
 
@@ -102,42 +102,6 @@ The application uses SQL Server LocalDB with the following tables:
 - IsConfirmed
 
 The database is automatically seeded with 5 sample rooms on first run.
-
-## Project Structure
-
-```
-Final_Project_Group_10/
-├── Controllers/
-│   ├── HomeController.cs
-│   ├── RoomsController.cs
-│   └── BookingsController.cs
-├── Data/
-│   └── ApplicationDbContext.cs
-├── Models/
-│   ├── Room.cs
-│   ├── Booking.cs
-│   └── ErrorViewModel.cs
-├── Views/
-│   ├── Home/
-│   │   ├── Index.cshtml
-│   │   └── Privacy.cshtml
-│   ├── Rooms/
-│   │   ├── Index.cshtml
-│   │   ├── Create.cshtml
-│   │   ├── Edit.cshtml
-│   │   ├── Details.cshtml
-│   │   └── Delete.cshtml
-│   ├── Bookings/
-│   │   ├── Index.cshtml
-│   │   ├── Create.cshtml
-│   │   ├── Details.cshtml
-│   │   └── Delete.cshtml
-│   └── Shared/
-│       ├── _Layout.cshtml
-│       └── Error.cshtml
-├── Migrations/
-└── wwwroot/
-```
 
 ## Usage Guide
 
@@ -211,8 +175,10 @@ Potential features for future versions:
 - Multiple language support
 
 ## Contributors
-
+👥 Team Members
 Group 10
-
+Member 1 - Dharmin Patel
+Member 2 - Shamak Patel
+Member 3 - Levi Okoye
 
 **Happy Booking! 🎉**
