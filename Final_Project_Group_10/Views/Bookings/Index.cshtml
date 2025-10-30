@@ -1,0 +1,78 @@
+@model IEnumerable<Final_Project_Group_10.Models.Booking>
+
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4">Room Bookings</h1>
+        <a asp-action="Create" class="btn btn-success btn-lg">
+            <i class="bi bi-calendar-plus"></i> New Booking
+        </a>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-hover shadow-sm">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Room</th>
+                        <th>User Name</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Purpose</th>
+                        <th>Status</th>
+                        <th>Booked On</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        var isPast = booking.EndTime < DateTime.Now;
+                        var rowClass = isPast ? "table-secondary" : "";
+                        <tr class="@rowClass">
+                            <td>
+                                <strong>@booking.Room?.Name</strong>
+                                <br />
+                                <small class="text-muted">@booking.Room?.Location</small>
+                            </td>
+                            <td>@booking.UserName</td>
+                            <td>@booking.StartTime.ToString("g")</td>
+                            <td>@booking.EndTime.ToString("g")</td>
+                            <td>@booking.Purpose</td>
+                            <td>
+                                @if (booking.IsConfirmed)
+                                {
+                                    <span class="badge bg-success">Confirmed</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning">Pending</span>
+                                }
+                                @if (isPast)
+                                {
+                                    <span class="badge bg-secondary">Completed</span>
+                                }
+                            </td>
+                            <td>@booking.BookedAt.ToString("g")</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@booking.Id" class="btn btn-sm btn-info">Details</a>
+                                <a asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-sm btn-danger">Cancel</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <h4>No bookings yet</h4>
+            <p>Click "New Booking" to create your first room booking!</p>
+        </div>
+    }
+</div>

@@ -1,0 +1,53 @@
+@model Final_Project_Group_10.Models.Booking
+
+@{
+    ViewData["Title"] = "Cancel Booking";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-4 text-danger mb-4">Cancel Booking</h1>
+            <div class="alert alert-warning">
+                <h4>Are you sure you want to cancel this booking?</h4>
+                <p>This action cannot be undone.</p>
+            </div>
+
+            <div class="card shadow">
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Room</dt>
+                        <dd class="col-sm-9">
+                            <strong>@Model.Room?.Name</strong>
+                            <br />
+                            <small>@Model.Room?.Location</small>
+                        </dd>
+
+                        <dt class="col-sm-3">User Name</dt>
+                        <dd class="col-sm-9">@Model.UserName</dd>
+
+                        <dt class="col-sm-3">Start Time</dt>
+                        <dd class="col-sm-9">@Model.StartTime.ToString("g")</dd>
+
+                        <dt class="col-sm-3">End Time</dt>
+                        <dd class="col-sm-9">@Model.EndTime.ToString("g")</dd>
+
+                        @if (!string.IsNullOrEmpty(Model.Purpose))
+                        {
+                            <dt class="col-sm-3">Purpose</dt>
+                            <dd class="col-sm-9">@Model.Purpose</dd>
+                        }
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">Keep Booking</a>
+                            <button type="submit" class="btn btn-danger">Cancel Booking</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

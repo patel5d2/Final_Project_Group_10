@@ -1,30 +1,37 @@
+using Final_Project_Group_10.Data;
 using Final_Project_Group_10.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Final_Project_Group_10.Controllers
 {
     public class RoomsController : Controller
     {
-        // GET: Rooms
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public RoomsController(ApplicationDbContext context)
         {
-            // Placeholder: Display list of all rooms
-            // TODO: Fetch from database using Entity Framework
-            var rooms = GetSampleRooms();
+            _context = context;
+        }
+
+        // GET: Rooms
+        public async Task<IActionResult> Index()
+        {
+            var rooms = await _context.Rooms.ToListAsync();
             return View(rooms);
         }
 
         // GET: Rooms/Details/5
-        public IActionResult Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            // Placeholder: Get room by ID
-            // TODO: Fetch from database using Entity Framework
-            var room = GetSampleRooms().FirstOrDefault(r => r.Id == id);
+            var room = await _context.Rooms
+                .Include(r => r.Bookings)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (room == null)
             {
@@ -43,26 +50,101 @@ namespace Final_Project_Group_10.Controllers
         // POST: Rooms/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Room room)
+        public async Task<IActionResult> Create([Bind("Name,Capacity,Location,IsAvailable,Description")] Room room)
         {
             if (ModelState.IsValid)
             {
-                // TODO: Add room to database
+                _context.Add(room);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(room);
         }
 
-        // Temporary method to provide sample data
-        private List<Room> GetSampleRooms()
+        // GET: Rooms/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            return new List<Room>
+            if (id == null)
             {
-                new Room { Id = 1, Name = "Conference Room A", Capacity = 20, Location = "Building 1, Floor 2", IsAvailable = true },
-                new Room { Id = 2, Name = "Study Room 101", Capacity = 6, Location = "Library, Floor 1", IsAvailable = true },
-                new Room { Id = 3, Name = "Lecture Hall B", Capacity = 100, Location = "Building 3, Floor 1", IsAvailable = false },
-                new Room { Id = 4, Name = "Meeting Room C", Capacity = 10, Location = "Building 2, Floor 3", IsAvailable = true }
-            };
+                return NotFound();
+            }
+
+            var room = await _context.Rooms.FindAsync(id);
+            if (room == null)
+            {
+                return NotFound();
+            }
+            return View(room);
+        }
+
+        // POST: Rooms/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Capacity,Location,IsAvailable,Description")] Room room)
+        {
+            if (id != room.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(room);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!RoomExists(room.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(room);
+        }
+
+        // GET: Rooms/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var room = await _context.Rooms
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (room == null)
+            {
+                return NotFound();
+            }
+
+            return View(room);
+        }
+
+        // POST: Rooms/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var room = await _context.Rooms.FindAsync(id);
+            if (room != null)
+            {
+                _context.Rooms.Remove(room);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool RoomExists(int id)
+        {
+            return _context.Rooms.Any(e => e.Id == id);
         }
     }
 }

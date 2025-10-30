@@ -1,0 +1,60 @@
+@model IEnumerable<Final_Project_Group_10.Models.Room>
+
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4">Available Rooms</h1>
+        <a asp-action="Create" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Add New Room
+        </a>
+    </div>
+
+    <div class="row">
+        @foreach (var room in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@room.Name</h5>
+                        <p class="card-text text-muted">@room.Location</p>
+                        @if (!string.IsNullOrEmpty(room.Description))
+                        {
+                            <p class="card-text">@room.Description</p>
+                        }
+                        <div class="mb-2">
+                            <span class="badge bg-info">
+                                <i class="bi bi-people"></i> Capacity: @room.Capacity
+                            </span>
+                            @if (room.IsAvailable)
+                            {
+                                <span class="badge bg-success">Available</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Unavailable</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="btn-group w-100" role="group">
+                            <a asp-action="Details" asp-route-id="@room.Id" class="btn btn-outline-primary">Details</a>
+                            <a asp-action="Edit" asp-route-id="@room.Id" class="btn btn-outline-secondary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@room.Id" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info mt-4">
+            <h4>No rooms available</h4>
+            <p>Get started by adding your first room!</p>
+        </div>
+    }
+</div>

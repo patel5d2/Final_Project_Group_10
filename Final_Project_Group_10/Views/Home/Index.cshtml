@@ -1,8 +1,81 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="hero-section text-center py-5 bg-primary text-white">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-4">Room Booking System</h1>
+        <p class="lead mb-4">Easily manage and book rooms for meetings, conferences, and events</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a asp-controller="Bookings" asp-action="Create" class="btn btn-light btn-lg px-4 gap-3">Book a Room</a>
+            <a asp-controller="Rooms" asp-action="Index" class="btn btn-outline-light btn-lg px-4">View Rooms</a>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body">
+                    <div class="fs-1 text-primary mb-3">
+                        <i class="bi bi-building"></i>
+                    </div>
+                    <h3 class="card-title">Browse Rooms</h3>
+                    <p class="card-text">View all available rooms with detailed information about capacity, location, and amenities.</p>
+                    <a asp-controller="Rooms" asp-action="Index" class="btn btn-primary">Explore Rooms</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body">
+                    <div class="fs-1 text-success mb-3">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <h3 class="card-title">Make a Booking</h3>
+                    <p class="card-text">Quick and easy booking process with instant confirmation and conflict detection.</p>
+                    <a asp-controller="Bookings" asp-action="Create" class="btn btn-success">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body">
+                    <div class="fs-1 text-info mb-3">
+                        <i class="bi bi-list-task"></i>
+                    </div>
+                    <h3 class="card-title">Manage Bookings</h3>
+                    <p class="card-text">View, modify, or cancel your existing bookings with just a few clicks.</p>
+                    <a asp-controller="Bookings" asp-action="Index" class="btn btn-info">View Bookings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Why Choose Our Booking System?</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Real-time availability checking</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Automatic conflict detection</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>User-friendly interface</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Instant booking confirmation</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Detailed room information</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Easy cancellation process</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
