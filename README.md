@@ -20,71 +20,6 @@ The **Room Booking & Scheduling System** is a web-based application designed to 
 - **Bootstrap 5** - Responsive UI framework
 - **HTML/CSS/JavaScript** - Front-end technologies
 
-## 📁 Project Structure
-
-```
-Final_Project_Group_10/
-├── Controllers/
-│   ├── HomeController.cs          # Homepage and general navigation
-│   └── RoomsController.cs          # Room listing, details, and management
-├── Models/
-│   ├── Room.cs                     # Room entity model
-│   ├── Booking.cs                  # Booking entity model
-│   └── ErrorViewModel.cs           # Error handling model
-├── Views/
-│   ├── Home/                       # Home page views
-│   ├── Rooms/                      # Room-related views
-│   │   ├── Index.cshtml           # List all rooms
-│   │   ├── Details.cshtml         # Room details
-│   │   └── Create.cshtml          # Create new room (Admin)
-│   └── Shared/                     # Shared layouts and components
-└── wwwroot/                        # Static files (CSS, JS, images)
-```
-
-## ✅ Current Milestone Progress
-
-### Milestone 1: Project Foundation & Version Control
-
-- ✅ ASP.NET Core MVC project created
-- ✅ Project uploaded to GitHub repository
-- ✅ Minimum two MVC controllers created:
-  - `HomeController` - Displays homepage and general navigation
-  - `RoomsController` - Room listing, details, and creation (Admin)
-- ✅ Multiple views created for room browsing
-- ✅ Two or more branches created in Git repository
-- ✅ Four or more commits demonstrating incremental development
-
-### Controllers Implemented
-
-1. **HomeController**
-   - `Index()` - Homepage
-   - `Privacy()` - Privacy policy page
-   - `Error()` - Error handling
-
-2. **RoomsController**
-   - `Index()` - Display all available rooms
-   - `Details(id)` - Show details of a specific room
-   - `Create()` - Form to create new room (GET)
-   - `Create(Room)` - Process room creation (POST)
-
-### Models Defined
-
-1. **Room**
-   - Properties: Id, Name, Capacity, Location, IsAvailable, Description
-   - Validation attributes for data integrity
-
-2. **Booking** (Future implementation)
-   - Properties: Id, RoomId, UserName, StartTime, EndTime, Purpose, BookedAt, IsConfirmed
-   - Foreign key relationship with Room
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- [.NET 6.0 SDK](https://dotnet.microsoft.com/download) or higher
-- [Visual Studio 2022](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
-- [Git](https://git-scm.com/)
-
 ### Installation
 
 1. Clone the repository:
@@ -207,19 +142,6 @@ Final_Project_Group_10/
 ## 👥 Team Members
 
 - **Group 10**
-  - Member 1 - [Role]
-  - Member 2 - [Role]
-  - Member 3 - [Role]
-
-## 📄 License
-
-This project is developed as part of an academic course assignment.
-
-## 📞 Contact
-
-For questions or support, please contact the development team through the course portal.
-
----
-
-**Last Updated:** October 30, 2025  
-**Project Status:** 🟢 Active Development - Milestone 1 Complete
+  - Member 1 - Dharmin Patel
+  - Member 2 - Shamak Patel
+  - Member 3 - Levi Okoye
