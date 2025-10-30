@@ -3,6 +3,39 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Room Booking & Scheduling System</h1>
+    <p class="lead">Reserve rooms for meetings, study sessions, and events</p>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">📅 Browse Rooms</h5>
+                    <p class="card-text">View available rooms, check capacity, and find the perfect space for your needs.</p>
+                    <a asp-controller="Rooms" asp-action="Index" class="btn btn-primary">View All Rooms</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🔖 Book a Room</h5>
+                    <p class="card-text">Reserve rooms for your meetings, study groups, or special events quickly and easily.</p>
+                    <a href="#" class="btn btn-secondary">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">⚙️ Manage Rooms</h5>
+                    <p class="card-text">Administrators can add, edit, and manage room inventory and bookings.</p>
+                    <a asp-controller="Rooms" asp-action="Create" class="btn btn-success">Add New Room</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
