@@ -212,18 +212,7 @@ Potential features for future versions:
 
 ## Contributors
 
-Final Project Group 10
-- IT 3047 - Web Server Application
-- Fall 2025 Semester
+Group 10
 
-## License
-
-This project is created for educational purposes as part of the IT 3047 course.
-
-## Support
-
-For issues or questions, please contact the development team or your course instructor.
-
----
 
 **Happy Booking! 🎉**
