@@ -4,9 +4,11 @@
     ViewData["Title"] = "Bookings";
 }
 
-<div class="container mt-4">
+<div class="container mt-4 animate-fade-in">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="display-4">Room Bookings</h1>
+        <h1 class="display-4 text-gradient fw-bold">
+            <i class="bi bi-calendar-check"></i> Room Bookings
+        </h1>
         <a asp-action="Create" class="btn btn-success btn-lg">
             <i class="bi bi-calendar-plus"></i> New Booking
         </a>
@@ -15,52 +17,79 @@
     @if (Model.Any())
     {
         <div class="table-responsive">
-            <table class="table table-hover shadow-sm">
-                <thead class="table-primary">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <th>Room</th>
-                        <th>User Name</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Purpose</th>
-                        <th>Status</th>
-                        <th>Booked On</th>
-                        <th>Actions</th>
+                        <th><i class="bi bi-building"></i> Room</th>
+                        <th><i class="bi bi-person"></i> User Name</th>
+                        <th><i class="bi bi-clock"></i> Start Time</th>
+                        <th><i class="bi bi-clock-fill"></i> End Time</th>
+                        <th><i class="bi bi-text-left"></i> Purpose</th>
+                        <th><i class="bi bi-check-circle"></i> Status</th>
+                        <th><i class="bi bi-calendar3"></i> Booked On</th>
+                        <th><i class="bi bi-gear"></i> Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var booking in Model)
                     {
                         var isPast = booking.EndTime < DateTime.Now;
-                        var rowClass = isPast ? "table-secondary" : "";
-                        <tr class="@rowClass">
+                        var isActive = booking.StartTime <= DateTime.Now && booking.EndTime > DateTime.Now;
+                        <tr>
                             <td>
-                                <strong>@booking.Room?.Name</strong>
+                                <strong style="color: #E00122;">@booking.Room?.Name</strong>
                                 <br />
-                                <small class="text-muted">@booking.Room?.Location</small>
+                                <small class="text-muted">
+                                    <i class="bi bi-geo-alt"></i> @booking.Room?.Location
+                                </small>
                             </td>
-                            <td>@booking.UserName</td>
-                            <td>@booking.StartTime.ToString("g")</td>
-                            <td>@booking.EndTime.ToString("g")</td>
+                            <td>
+                                <i class="bi bi-person-circle text-info"></i> @booking.UserName
+                            </td>
+                            <td>@booking.StartTime.ToString("MMM dd, yyyy h:mm tt")</td>
+                            <td>@booking.EndTime.ToString("MMM dd, yyyy h:mm tt")</td>
                             <td>@booking.Purpose</td>
                             <td>
-                                @if (booking.IsConfirmed)
+                                @if (isActive)
                                 {
-                                    <span class="badge bg-success">Confirmed</span>
+                                    <span class="badge bg-info">
+                                        <i class="bi bi-broadcast"></i> In Progress
+                                    </span>
+                                }
+                                else if (isPast)
+                                {
+                                    <span class="badge bg-secondary">
+                                        <i class="bi bi-check-all"></i> Completed
+                                    </span>
+                                }
+                                else if (booking.IsConfirmed)
+                                {
+                                    <span class="badge bg-success">
+                                        <i class="bi bi-check-circle"></i> Confirmed
+                                    </span>
                                 }
                                 else
                                 {
-                                    <span class="badge bg-warning">Pending</span>
-                                }
-                                @if (isPast)
-                                {
-                                    <span class="badge bg-secondary">Completed</span>
+                                    <span class="badge bg-warning text-dark">
+                                        <i class="bi bi-clock"></i> Pending
+                                    </span>
                                 }
                             </td>
-                            <td>@booking.BookedAt.ToString("g")</td>
                             <td>
-                                <a asp-action="Details" asp-route-id="@booking.Id" class="btn btn-sm btn-info">Details</a>
-                                <a asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-sm btn-danger">Cancel</a>
+                                <small>@booking.BookedAt.ToString("MMM dd, yyyy")</small>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Details" asp-route-id="@booking.Id" class="btn btn-sm btn-info">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    @if (!isPast)
+                                    {
+                                        <a asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-sm btn-danger">
+                                            <i class="bi bi-x-circle"></i>
+                                        </a>
+                                    }
+                                </div>
                             </td>
                         </tr>
                     }
@@ -70,9 +99,15 @@
     }
     else
     {
-        <div class="alert alert-info">
-            <h4>No bookings yet</h4>
-            <p>Click "New Booking" to create your first room booking!</p>
+        <div class="container-modern text-center">
+            <div class="py-5">
+                <i class="bi bi-calendar-x display-1 text-muted"></i>
+                <h3 class="mt-4">No Bookings Yet</h3>
+                <p class="text-muted mb-4">Ready to book your first room? It only takes a moment!</p>
+                <a asp-action="Create" class="btn btn-success btn-lg">
+                    <i class="bi bi-calendar-plus"></i> Create Your First Booking
+                </a>
+            </div>
         </div>
     }
 </div>

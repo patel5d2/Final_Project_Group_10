@@ -2,78 +2,162 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="hero-section text-center py-5 bg-primary text-white">
+<div class="hero-section text-center text-white animate-fade-in">
     <div class="container">
-        <h1 class="display-3 fw-bold mb-4">Room Booking System</h1>
-        <p class="lead mb-4">Easily manage and book rooms for meetings, conferences, and events</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a asp-controller="Bookings" asp-action="Create" class="btn btn-light btn-lg px-4 gap-3">Book a Room</a>
-            <a asp-controller="Rooms" asp-action="Index" class="btn btn-outline-light btn-lg px-4">View Rooms</a>
+        <h1 class="display-2 fw-bold mb-4">
+            <i class="bi bi-calendar3-event"></i> Room Booking System
+        </h1>
+        <p class="lead mb-5 fs-4">Streamline your space management with our modern, intelligent booking platform</p>
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a asp-controller="Bookings" asp-action="Create" class="btn btn-light btn-lg px-5 shadow">
+                <i class="bi bi-calendar-plus"></i> Book a Room Now
+            </a>
+            <a asp-controller="Rooms" asp-action="Index" class="btn btn-outline-light btn-lg px-5">
+                <i class="bi bi-building"></i> Browse Rooms
+            </a>
         </div>
     </div>
 </div>
 
 <div class="container my-5">
-    <div class="row g-4">
+    <div class="row g-4 mb-5">
         <div class="col-md-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <div class="fs-1 text-primary mb-3">
-                        <i class="bi bi-building"></i>
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="bi bi-building display-1 text-primary"></i>
                     </div>
-                    <h3 class="card-title">Browse Rooms</h3>
-                    <p class="card-text">View all available rooms with detailed information about capacity, location, and amenities.</p>
-                    <a asp-controller="Rooms" asp-action="Index" class="btn btn-primary">Explore Rooms</a>
+                    <h3 class="card-title fw-bold mb-3">Browse Rooms</h3>
+                    <p class="card-text text-secondary mb-4">Explore our collection of modern meeting spaces with detailed capacity, location, and amenity information at your fingertips.</p>
+                    <a asp-controller="Rooms" asp-action="Index" class="btn btn-primary">
+                        <i class="bi bi-arrow-right-circle"></i> Explore All Rooms
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <div class="fs-1 text-success mb-3">
-                        <i class="bi bi-calendar-check"></i>
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="bi bi-calendar-check display-1 text-success"></i>
                     </div>
-                    <h3 class="card-title">Make a Booking</h3>
-                    <p class="card-text">Quick and easy booking process with instant confirmation and conflict detection.</p>
-                    <a asp-controller="Bookings" asp-action="Create" class="btn btn-success">Book Now</a>
+                    <h3 class="card-title fw-bold mb-3">Quick Booking</h3>
+                    <p class="card-text text-secondary mb-4">Reserve your perfect space in seconds with our streamlined booking process featuring real-time availability and instant confirmation.</p>
+                    <a asp-controller="Bookings" asp-action="Create" class="btn btn-success">
+                        <i class="bi bi-lightning"></i> Book Instantly
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <div class="fs-1 text-info mb-3">
-                        <i class="bi bi-list-task"></i>
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="bi bi-list-check display-1 text-info"></i>
                     </div>
-                    <h3 class="card-title">Manage Bookings</h3>
-                    <p class="card-text">View, modify, or cancel your existing bookings with just a few clicks.</p>
-                    <a asp-controller="Bookings" asp-action="Index" class="btn btn-info">View Bookings</a>
+                    <h3 class="card-title fw-bold mb-3">Manage Bookings</h3>
+                    <p class="card-text text-secondary mb-4">View, modify, or cancel your reservations effortlessly. Stay organized with a comprehensive overview of all your bookings.</p>
+                    <a asp-controller="Bookings" asp-action="Index" class="btn btn-info">
+                        <i class="bi bi-eye"></i> View My Bookings
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="container-modern">
+                <div class="text-center mb-4">
+                    <h2 class="display-5 fw-bold text-gradient mb-3">
+                        <i class="bi bi-stars"></i> Why Choose Our Platform?
+                    </h2>
+                    <p class="lead text-muted">Experience the future of room booking with cutting-edge features</p>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-check-circle-fill text-success fs-3 me-3"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Real-time Availability</h5>
+                                <p class="text-muted">Instantly see which rooms are free and book them on the spot</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-check-circle-fill text-success fs-3 me-3"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Smart Conflict Detection</h5>
+                                <p class="text-muted">Automatic prevention of double-bookings with intelligent scheduling</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-check-circle-fill text-success fs-3 me-3"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Instant Confirmation</h5>
+                                <p class="text-muted">Get immediate booking confirmation with no waiting time</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-check-circle-fill text-success fs-3 me-3"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Modern Interface</h5>
+                                <p class="text-muted">Intuitive, beautiful design that works perfectly on any device</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-check-circle-fill text-success fs-3 me-3"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Detailed Room Info</h5>
+                                <p class="text-muted">Complete information about capacity, location, and amenities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-check-circle-fill text-success fs-3 me-3"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Easy Cancellation</h5>
+                                <p class="text-muted">Cancel or modify bookings with just a few clicks</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row mt-5">
-        <div class="col-12">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h2 class="card-title mb-4">Why Choose Our Booking System?</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Real-time availability checking</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Automatic conflict detection</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>User-friendly interface</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Instant booking confirmation</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Detailed room information</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Easy cancellation process</li>
-                            </ul>
-                        </div>
-                    </div>
+        <div class="col-12 text-center">
+            <div class="card bg-gradient p-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <h3 class="text-dark fw-bold mb-3">Ready to Get Started?</h3>
+                <p class="text-dark mb-4 lead">Join hundreds of organizations managing their spaces efficiently</p>
+                <div>
+                    <a asp-controller="Bookings" asp-action="Create" class="btn btn-light btn-lg me-2">
+                        <i class="bi bi-rocket-takeoff"></i> Start Booking
+                    </a>
+                    <a asp-controller="Home" asp-action="About" class="btn btn-dark btn-lg">
+                        <i class="bi bi-info-circle"></i> Learn More
+                    </a>
                 </div>
             </div>
         </div>
