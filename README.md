@@ -27,21 +27,6 @@ A comprehensive web application for managing room reservations built with ASP.NE
 - Booking history tracking
 - Cancel bookings easily
 
-## Tech Stack
-
-- **Framework**: ASP.NET Core 8.0 MVC
-- **Database**: SQL Server (LocalDB)
-- **ORM**: Entity Framework Core 9.0
-- **Frontend**: Bootstrap 5 + Bootstrap Icons
-- **Language**: C# 12.0
-
-## Getting Started
-
-### Prerequisites
-- .NET 8.0 SDK or later
-- Visual Studio 2022 or VS Code
-- SQL Server LocalDB (included with Visual Studio)
-
 ### Installation
 
 1. Clone the repository:
